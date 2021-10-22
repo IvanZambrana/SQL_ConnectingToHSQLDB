@@ -23,16 +23,17 @@ public class T1_R5_ConectingToHSQLDB {
         Scanner sc = new Scanner(System.in);
         int option, codA;
         try {
+            System.out.println("Inserta sgbd: ");
+            String sgdb = sc.nextLine();
             System.out.println("Inserta base de datos (ejemplo instituto): ");
             String db = sc.nextLine();
             boolean exit = false;
             String dniProfe;
-            //Cargamos el driver
-            Class.forName("org.hsqldb.jdbc.JDBCDriver");
-
+         
             //Creamos conexión
-            Connection conexion = DriverManager.getConnection("jdbc:hsqldb:file:C:\\hsqldb\\data\\" + db + "\\" + db , "SA", "");
-            
+            Connection conexion = null;
+            Conectar con = new Conectar(sgdb, db);
+            conexion = con.getConnection();
             //Creacion del menu
             while(!exit) {
                 System.out.println("\n\n\n-------------------------------");
